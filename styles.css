@@ -55,7 +55,91 @@ footer {
 }
 
 
-/* Font for large text */
-special-font {
-    font-family: "lucida handwriting";
+/* Fix for special-font class */
+.special-font {
+    font-family: "Lucida Handwriting", cursive;
+}
+
+/* --- Navigation Hover Transition --- */
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+nav ul li a:hover {
+    background-color: #561865;
+    color: white;
+}
+
+/* --- Section Hover Interactivity --- */
+main section {
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid #ccc;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    background-color: rgb(230, 204, 244);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+main section:hover {
+    transform: scale(1.02); /* Slight zoom */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+}
+
+/* --- Table Styling --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #fff;
+}
+
+caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+
+thead th {
+    background-color: #d177b7;
+    color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+tbody td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+tfoot td {
+    text-align: center;
+    font-style: italic;
+    padding: 10px;
+    border-top: 2px solid #d177b7;
+}
+
+tbody tr:hover {
+    background-color: #f9e6f4; /* Row hover effect */
+    transition: background-color 0.3s ease;
+}
+
+img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;}
+
+    /* Colgroup Styling */
+.col-light {
+    background-color: #f0f8ff; /* Light blue shade */
+}
+
+img {
+  max-width: 150px;
+  height: auto;
 }
