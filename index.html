@@ -12,10 +12,29 @@
 <body>
 
     <header>
+        <div style="text-align: right; padding-right: 20px; padding-top: 10px;">
+    <label for="darkModeToggle"><strong>Dark Mode</strong></label>
+    <input type="checkbox" id="darkModeToggle">
+</div>
         <h1><span class="special-font">Welcome to My Personal Website!</span></h1> <!-- Welcome message -->
         <nav>
             <ul>
                 <li><a href="#about">About</a></li> <!-- Link to About section -->
+                <section id="featured-content">
+    <h2><span class="special-font">Featured Content</span></h2>
+    
+    <div id="university-resources" style="padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;">
+        <h3>University Resources</h3>
+        <a href="https://www.ecpi.edu/">ECPI Program Home</a>
+    </div>
+    
+    <div id="personal-projects" style="padding: 10px; border: 1px solid #ccc;">
+        <h3>Personal Projects</h3>
+        <a href="https://github.com/Rcrawford1739" target="_blank">
+            <img src="ComingSoon.png" alt="Personal GitHub Projects" style="width: 100px;">
+        </a>
+    </div>
+</section>
                 <li><a href="#projects">Projects</a></li> <!-- Link to Projects section -->
                 <li><a href="#contact">Contact</a></li> <!-- Link to Contact section -->
             </ul>
@@ -96,6 +115,61 @@
     <footer>
         <p>&copy; 2025 <cite>Ryan Crawford</cite> All rights reserved.</p> <!-- Footer with Copyright character entity -->
     </footer>
+<script>
+    // 1. Conditional Logic for Featured Content
+    // Counts the number of project rows in the table body (currently 2)
+    const projectRows = document.querySelectorAll('#projects tbody tr');
+    const numProjects = projectRows.length; 
 
+    const uniResources = document.getElementById('university-resources');
+    const personalProjects = document.getElementById('personal-projects');
+
+    if (numProjects < 3) {
+        uniResources.style.display = 'block';
+        personalProjects.style.display = 'block';
+    } else {
+        uniResources.style.display = 'none';
+        personalProjects.style.display = 'block';
+    }
+
+    // 2. Loop for Dynamic Content (Skills)
+    const skills = ["HTML", "CSS", "JavaScript", "C#", "Git/GitHub"];
+    const skillsList = document.createElement('ul');
+
+    skills.forEach(skill => {
+        const li = document.createElement('li');
+        li.textContent = skill;
+        skillsList.appendChild(li);
+    });
+
+    // Appends the generated list directly into the About section
+    document.getElementById('about').appendChild(skillsList);
+
+    // 3. Dark Mode Slider Logic
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('change', function() {
+        if (this.checked) {
+            document.body.style.backgroundColor = '#1e1e1e';
+            document.body.style.color = '#f0f0f0';
+        } else {
+            document.body.style.backgroundColor = '';
+            document.body.style.color = '';
+        }
+    });
+
+    // 4. Event Listener for Form Submit
+    const submitBtn = document.querySelector('.contact-form button[type="submit"]');
+    submitBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Stops the page from refreshing
+        
+        let nameInput = document.getElementById('name').value;
+        // Defaults to Ryan Crawford if the field is left blank
+        if (!nameInput) {
+            nameInput = "Ryan Crawford";
+        }
+        
+        alert(`Thank you, ${nameInput}, your message has been sent!`);
+    });
+</script>
 </body>
 </html>
