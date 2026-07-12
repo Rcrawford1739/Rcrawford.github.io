@@ -157,19 +157,47 @@
         }
     });
 
-    // 4. Event Listener for Form Submit
-    const submitBtn = document.querySelector('.contact-form button[type="submit"]');
-    submitBtn.addEventListener('click', function(event) {
-        event.preventDefault(); // Stops the page from refreshing
+    // 4. Event Listener for Form Submit with Timed Confirmation
+const submitBtn = document.querySelector('.contact-form button[type="submit"]');
+const contactForm = document.querySelector('.contact-form');
+
+submitBtn.addEventListener('click', function(event) {
+    // 1. Prevent default behavior from refreshing the page
+    event.preventDefault(); 
+
+    let nameInput = document.getElementById('name').value;
+    
+    // Defaults to Ryan Crawford if the field is left blank
+    if (!nameInput) {
+        nameInput = "Ryan Crawford"; 
+    }
+
+    // Check for an existing status message and remove it (prevents duplicates on multiple clicks)
+    const existingStatus = document.getElementById('form-status');
+    if (existingStatus) {
+        existingStatus.remove();
+    }
+
+    // 2. Display a loading element dynamically
+    const statusMessage = document.createElement('p');
+    statusMessage.id = "form-status";
+    statusMessage.textContent = "Sending message...";
+    statusMessage.style.color = "#007bff"; // A nice blue for loading
+    statusMessage.style.fontWeight = "bold";
+    
+    // Append the loading message to the bottom of the contact form
+    contactForm.appendChild(statusMessage);
+
+    // 3. Use setTimeout to delay the confirmation message by 2.5 seconds (2500ms)
+    setTimeout(function() {
+        // 4. Replace the loading message with the confirmation message
+        statusMessage.textContent = `Thank you, ${nameInput}, your message has been sent successfully!`;
+        statusMessage.style.color = "#28a745"; // Success green color
         
-        let nameInput = document.getElementById('name').value;
-        // Defaults to Ryan Crawford if the field is left blank
-        if (!nameInput) {
-            nameInput = "Ryan Crawford";
-        }
-        
-        alert(`Thank you, ${nameInput}, your message has been sent!`);
-    });
+        // Optional: clear the form fields
+        contactForm.reset();
+    }, 2500); 
+});
 </script>
 </body>
 </html>
