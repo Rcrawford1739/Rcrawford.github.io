@@ -1,57 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <meta name="description" content="This is a personal website showcasing my projects and contact information."> 
-    <meta name="keywords" content="HTML, CSS, Web Development, Projects, Contact"> 
-    <meta name="author" content="Ryan Crawford"> <!-- Author of the document -->
-    <title>My Personal Website</title> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a personal website showcasing my projects and contact information.">
+    <meta name="keywords" content="HTML, CSS, Web Development, Projects, Contact">
+    <meta name="author" content="Ryan Crawford">
+    <title>My Personal Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- 1. Custom Welcome Modal -->
+    <div id="welcomeModal" style="display: flex; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+        <div style="background-color: white; padding: 20px; border-radius: 5px; text-align: center; color: black; max-width: 400px;">
+            <h2>This page is a work in progress.</h2>
+            <button id="closeModalBtn" style="margin-top: 15px; padding: 10px 20px; cursor: pointer;">Close</button>
+        </div>
+    </div>
 
     <header>
         <div style="text-align: right; padding-right: 20px; padding-top: 10px;">
-    <label for="darkModeToggle"><strong>Dark Mode</strong></label>
-    <input type="checkbox" id="darkModeToggle">
-</div>
-        <h1><span class="special-font">Welcome to My Personal Website!</span></h1> <!-- Welcome message -->
+            <label for="darkModeToggle"><strong>Dark Mode</strong></label>
+            <input type="checkbox" id="darkModeToggle">
+        </div>
+        <h1><span class="special-font">Welcome to My Personal Website!</span></h1>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li> <!-- Link to About section -->
+                <li><a href="#about">About</a></li>
                 <section id="featured-content">
-    <li><a href="#featured-content">Featured Content</a></li>
-    
-    <div id="university-resources" style="padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;">
-        <h3>University Resources</h3>
-        <a href="https://www.ecpi.edu/">ECPI Program Home</a>
-    </div>
-    
-    <div id="personal-projects" style="padding: 10px; border: 1px solid #ccc;">
-        <h3>Personal Projects</h3>
-        <a href="https://github.com/Rcrawford1739" target="_blank">
-            <img src="ComingSoon.png" alt="Personal GitHub Projects" style="width: 100px;">
-        </a>
-    </div>
-</section>
-                <li><a href="#projects">Projects</a></li> <!-- Link to Projects section -->
-                <li><a href="#contact">Contact</a></li> <!-- Link to Contact section -->
+                    <li><a href="#featured-content">Featured Content</a></li>
+                    <div id="university-resources" style="padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;">
+                        <h3>University Resources</h3>
+                        <a href="https://www.ecpi.edu/">ECPI Program Home</a>
+                    </div>
+                    <div id="personal-projects" style="padding: 10px; border: 1px solid #ccc;">
+                        <h3>Personal Projects</h3>
+                        <a href="https://github.com/Rcrawford1739" target="_blank">
+                            <img src="ComingSoon.png" alt="Personal GitHub Projects" style="width: 100px;">
+                        </a>
+                    </div>
+                </section>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="main-flex">
         <section id="about">
-            <h2><span class="special-font">About</span></h2> <!-- Header for About section -->
-            <p>This section contains information about me and my background.</p> <!-- Paragraph for About section -->
+            <h2><span class="special-font">About</span></h2>
+            <p>This section contains information about me and my background.</p>
         </section>
 
         <section id="projects">
-            <h2><span class="special-font">Projects</span></h2> <!-- Header for Projects section -->
-            <p>This section showcases my projects and the work I have done.</p> <!-- Paragraph for Projects section -->
-            
-            <!-- Table to display projects -->
+            <h2><span class="special-font">Projects</span></h2>
+            <p>This section showcases my projects and the work I have done.</p>
             <table>
                 <caption>Sample Projects</caption>
                 <colgroup>
@@ -87,7 +90,7 @@
         </section>
 
         <section id="contact">
-            <h2><span class="special-font">Contact</span></h2> <!-- Header for Contact section -->
+            <h2><span class="special-font">Contact</span></h2>
             <form class="contact-form">
                 <div class="form-row">
                     <label for="name">Name:</label>
@@ -106,98 +109,94 @@
                     <textarea id="message" name="message" rows="5"></textarea>
                 </div>
                 <div class="form-row">
-                    <button type="submit">Send Message</button>
+                    <button type="submit" title="Click to send your message!">Send Message</button>
                 </div>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 <cite>Ryan Crawford</cite> All rights reserved.</p> <!-- Footer with Copyright character entity -->
+        <p>&copy; 2025 <cite>Ryan Crawford</cite> All rights reserved.</p>
     </footer>
-<script>
-    // 1. Conditional Logic for Featured Content
-    // Counts the number of project rows in the table body (currently 2)
-    const projectRows = document.querySelectorAll('#projects tbody tr');
-    const numProjects = projectRows.length; 
 
-    const uniResources = document.getElementById('university-resources');
-    const personalProjects = document.getElementById('personal-projects');
+    <script>
+        const welcomeModal = document.getElementById('welcomeModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        closeModalBtn.addEventListener('click', function() {
+            welcomeModal.style.display = 'none';
+        });
 
-    if (numProjects < 3) {
-        uniResources.style.display = 'block';
-        personalProjects.style.display = 'block';
-    } else {
-        uniResources.style.display = 'none';
-        personalProjects.style.display = 'block';
-    }
+        const projectRows = document.querySelectorAll('#projects tbody tr');
+        const numProjects = projectRows.length;
+        const uniResources = document.getElementById('university-resources');
+        const personalProjects = document.getElementById('personal-projects');
 
-    // 2. Loop for Dynamic Content (Skills)
-    const skills = ["HTML", "CSS", "JavaScript", "C#", "Git/GitHub"];
-    const skillsList = document.createElement('ul');
+        if (numProjects < 3) {
+            uniResources.style.display = 'block';
+            personalProjects.style.display = 'block';
+        } else {
+            uniResources.style.display = 'none';
+            personalProjects.style.display = 'block';
+        }
 
-    skills.forEach(skill => {
-        const li = document.createElement('li');
-        li.textContent = skill;
-        skillsList.appendChild(li);
-    });
+        const skills = ["HTML", "CSS", "JavaScript", "C#", "Git/GitHub"];
+        const skillsList = document.createElement('ul');
+        skills.forEach(skill => {
+            const li = document.createElement('li');
+            li.textContent = skill;
+            skillsList.appendChild(li);
+        });
+        document.getElementById('about').appendChild(skillsList);
 
-    // Appends the generated list directly into the About section
-    document.getElementById('about').appendChild(skillsList);
+        const darkModeToggle = document.getElementById('darkModeToggle');
 
-    // 3. Dark Mode Slider Logic
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    darkModeToggle.addEventListener('change', function() {
-        if (this.checked) {
+        if (localStorage.getItem('darkMode') === 'enabled') {
             document.body.style.backgroundColor = '#1e1e1e';
             document.body.style.color = '#f0f0f0';
-        } else {
-            document.body.style.backgroundColor = '';
-            document.body.style.color = '';
+            darkModeToggle.checked = true;
         }
-    });
 
-    // 4. Event Listener for Form Submit with Timed Confirmation
-const submitBtn = document.querySelector('.contact-form button[type="submit"]');
-const contactForm = document.querySelector('.contact-form');
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.style.backgroundColor = '#1e1e1e';
+                document.body.style.color = '#f0f0f0';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                document.body.style.backgroundColor = '';
+                document.body.style.color = '';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
 
-submitBtn.addEventListener('click', function(event) {
-    // 1. Prevent default behavior from refreshing the page
-    event.preventDefault(); 
+        const submitBtn = document.querySelector('.contact-form button[type="submit"]');
+        const contactForm = document.querySelector('.contact-form');
 
-    let nameInput = document.getElementById('name').value;
-    
-    // Defaults to Ryan Crawford if the field is left blank
-    if (!nameInput) {
-        nameInput = "Ryan Crawford"; 
-    }
+        submitBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            let nameInput = document.getElementById('name').value;
+            if (!nameInput) {
+                nameInput = "Ryan Crawford"; 
+            }
 
-    // Check for an existing status message and remove it (prevents duplicates on multiple clicks)
-    const existingStatus = document.getElementById('form-status');
-    if (existingStatus) {
-        existingStatus.remove();
-    }
+            const existingStatus = document.getElementById('form-status');
+            if (existingStatus) {
+                existingStatus.remove();
+            }
 
-    // 2. Display a loading element dynamically
-    const statusMessage = document.createElement('p');
-    statusMessage.id = "form-status";
-    statusMessage.textContent = "Sending message...";
-    statusMessage.style.color = "#007bff"; // A nice blue for loading
-    statusMessage.style.fontWeight = "bold";
-    
-    // Append the loading message to the bottom of the contact form
-    contactForm.appendChild(statusMessage);
+            const statusMessage = document.createElement('p');
+            statusMessage.id = "form-status";
+            statusMessage.textContent = "Sending message...";
+            statusMessage.style.color = "#007bff";
+            statusMessage.style.fontWeight = "bold";
 
-    // 3. Use setTimeout to delay the confirmation message by 2.5 seconds (2500ms)
-    setTimeout(function() {
-        // 4. Replace the loading message with the confirmation message
-        statusMessage.textContent = `Thank you, ${nameInput}, your message has been sent successfully!`;
-        statusMessage.style.color = "#28a745"; // Success green color
-        
-        // Optional: clear the form fields
-        contactForm.reset();
-    }, 2500); 
-});
-</script>
+            contactForm.appendChild(statusMessage);
+
+            setTimeout(function() {
+                statusMessage.textContent = `Thank you, ${nameInput}, your message has been sent successfully!`;
+                statusMessage.style.color = "#28a745";
+                contactForm.reset();
+            }, 2500);
+        });
+    </script>
 </body>
 </html>
